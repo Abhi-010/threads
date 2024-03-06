@@ -10,6 +10,7 @@ public class Sorter implements Callable<List<Integer>> {
 
     private List<Integer> arrayToSort ;
     private ExecutorService executorService;
+
     public Sorter(List<Integer> arrayToSort, ExecutorService executorService){
         this.arrayToSort = arrayToSort;
         this.executorService = executorService;

@@ -1,20 +1,22 @@
-package operatingsystem.addersubstractor;
+package operatingsystem.addersubstractorWithLock;
 
 import java.util.concurrent.locks.Lock;
 
 public class Subtractor implements Runnable{
     private Count count;
-
-    public Subtractor(Count count){
+    private Lock lock;
+    public Subtractor(Count count, Lock lock){
         this.count = count;
+        this.lock = lock;
     }
     @Override
     public void run() {
-
+        lock.lock();
         for(int i = 1 ; i < 1000 ; i++){
             int currentValue = count.getValue();
             int nextValue = currentValue - i;
             count.setValue(nextValue);
         }
+        lock.unlock();
     }
 }

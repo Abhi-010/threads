@@ -7,16 +7,20 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) {
-        Executor executor = Executors.newFixedThreadPool(10);
+        //Executor executor = Executors.newFixedThreadPool(10);
 
-        ExecutorService executorService = Executors.newCachedThreadPool();
+        //ExecutorService executorService = Executors.newCachedThreadPool();
+
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+
 
         for(int i = 0 ; i < 100 ; i++){
-            if (i == 4 || i == 8 || i == 15 || i == 50) {
-                System.out.println("Wait");
-            }
+//            if (i == 4 || i == 8 || i == 15 || i == 50) {
+//                System.out.println("Wait");
+//            }
             PrintNumber printNumber = new PrintNumber(i);
             executor.execute(printNumber);
         }
+        executor.shutdown();
     }
 }
