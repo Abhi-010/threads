@@ -1,6 +1,4 @@
-package operatingsystem.addersubstractorSynchronized;
-
-import java.util.concurrent.locks.Lock;
+package operatingsystem.addersubstractorSynchronizedMethod;
 
 public class Adder implements Runnable{
 
@@ -12,9 +10,7 @@ public class Adder implements Runnable{
     @Override
     public void run() {
         for(int i = 1 ; i < 1000 ; i++){
-            synchronized (count){
-                count.value += i;
-            }
+            count.incrementValue(i);
         }
     }
 }
